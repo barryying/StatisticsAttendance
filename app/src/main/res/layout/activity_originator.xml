@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/liner1"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_title" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edttxt_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/edit_bg"
+            android:ems="13"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_place"
+            android:paddingTop="10dp" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edttxt_place"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:ems="13"
+            android:inputType="textMultiLine"
+            android:background="@drawable/edit_bg"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="90dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_date"
+            android:paddingTop="10dp"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edttxt_date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:ems="13"
+            android:inputType="textMultiLine"
+            android:background="@drawable/edit_bg" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="130dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_submit"
+            android:text="@string/txt_submit"
+            style="@style/btn"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:text="@string/txt_cancel"
+            style="@style/btn" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp">
+
+            <!-- 目的 -->
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="目的" />
+
+            <!-- 地点 -->
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="地点" />
+
+            <!-- 时间 -->
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="时间" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.ListViewCompat
+            android:id="@+id/lsv_description"
+            android:saveEnabled="false"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@color/color_check_bg">
+        </android.support.v7.widget.ListViewCompat>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
