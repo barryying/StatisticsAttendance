@@ -14,6 +14,9 @@ import android.widget.Toast
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
+import com.example.taoying.adapter.DescriptionAdapter
+import com.example.taoying.utils.SqliteUtils
+import com.example.taoying.models.Descriptions
 
 
 /**
@@ -23,38 +26,46 @@ import android.widget.ListView
 class OriginatorActivity : AppCompatActivity() {
 
     data class Description(val title: String, val place: String,val date: String)
-    var itemList = ArrayList<Description>()
-    private var adapter: TestAdapter? = null
+    //var itemList = ArrayList<Description>()
+    //private var adapter: TestAdapter? = null
+    var sqliteutils: SqliteUtils? = null
+    var listDescriptions: List<Descriptions> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_originator)
-        var title = edttxt_Title.text.toString()
-        var place = edttxt_place.text.toString()
-        var date = edttxt_date.text.toString()
+        toast("初始化")
+        initDB()
 
         btn_cancel.setOnClickListener ({ startActivity(Intent(Guiding@this,MainActivity::class.java ))})
         btn_submit.setOnClickListener ({
+            var success = false
             // 判断是否为空
-            if(title == "" || place == "" || date == "") {
+            var str_title = edttxt_Title.text.toString()
+            var str_place = edttxt_place.text.toString()
+            var str_date = edttxt_date.text.toString()
+            if(str_title == "" || str_place == "" || str_date == "") {
                 toast("文本框不允许为空")
             }
             else {
 
                 //Log.i("www.ythook.com","start log")
                 // 数据类序列化
-                val description = Description(title, place, date)
-                LogUtils.i("www.ythook.com", description.toString())
+//                val description = Description(str_title, str_place, str_date)
+//                LogUtils.i("www.ythook.com", description.toString())
+//
+//                // ListView 绑定数据
+//                itemList.add(description)
+//                lsv_description.adapter = TestAdapter(itemList, this)
 
-                // ListView 绑定数据
-                itemList.add(description)
-                lsv_description.adapter = TestAdapter(itemList, this)
-
-                // ListView的每个Item点击事件
-                lsv_description.setOnItemClickListener(ItemClickListener())
-                edttxt_Title.setText("")
-                edttxt_place.setText("")
-                edttxt_date.setText("")
+                // 添加记录 addDescription
+                val descriptions: Descriptions = Descriptions()
+                descriptions.title = str_title
+                descriptions.place = str_place
+                descriptions.date = str_date
+                success = sqliteutils?.addDescription(descriptions) as Boolean
+                toast("点击提交了")
+                initDB()
 
                 //Toast.makeText(this,"创建成功",Toast.LENGTH_SHORT).show()
                 toast("创建成功")
@@ -66,18 +77,36 @@ class OriginatorActivity : AppCompatActivity() {
     private inner class ItemClickListener : OnItemClickListener {
 
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-            // 获取ListView
-            val listView = parent as ListView
+//            // 获取ListView
+//            val listView = parent as ListView
+//
+//            // 通过position查找Item信息，强制转换为Description类型
+//            var description: Description = listView.getItemAtPosition(position) as Description
+//
+//            // 解构Description
+//            var (title,place,date) = description//多重赋值
+//            edttxt_Title.setText("$title")
+//            edttxt_place.setText("$place")
+//            edttxt_date.setText("$date")
+//            LogUtils.i("www.ythook.com",description.toString())
+        }
+    }
 
-            // 通过position查找Item信息，强制转换为Description类型
-            var description: Description = listView.getItemAtPosition(position) as Description
+    fun initDB() {
+        // ListView 绑定数据
+        sqliteutils = SqliteUtils(this)
+        listDescriptions = (sqliteutils as SqliteUtils).description()
 
-            // 解构Description
-            var (title,place,date) = description//多重赋值
-            edttxt_Title.setText("$title")
-            edttxt_place.setText("$place")
-            edttxt_date.setText("$date")
-            LogUtils.i("www.ythook.com",description.toString())
+        if(!listDescriptions.isEmpty()){
+            lsv_description.adapter = DescriptionAdapter(listDescriptions, this)
+            // ListView的每个Item点击事件
+            lsv_description.setOnItemClickListener(ItemClickListener())
+            edttxt_Title.setText("")
+            edttxt_place.setText("")
+            edttxt_date.setText("")
+        }
+        else {
+            toast("数据库为空！")
         }
     }
 }

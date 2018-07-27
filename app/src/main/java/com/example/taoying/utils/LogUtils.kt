@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 /**
- * Created by TaoYing on 2018/2/28.
+ * @author Created by TaoYing on 2018/2/28.
  */
 
 object LogUtils {
