@@ -49,7 +49,7 @@ class OriginatorActivity : AppCompatActivity() {
             }
             else {
 
-                //Log.i("www.ythook.com","start log")
+                Log.i("www.ythook.com","start log")
                 // 数据类序列化
 //                val description = Description(str_title, str_place, str_date)
 //                LogUtils.i("www.ythook.com", description.toString())
@@ -77,6 +77,19 @@ class OriginatorActivity : AppCompatActivity() {
     private inner class ItemClickListener : OnItemClickListener {
 
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            // 获取ListView
+            val listView = parent as ListView
+
+            // 通过position查找Item信息，强制转换为Descriptions类型
+            var descriptions: Descriptions = listView.getItemAtPosition(position) as Descriptions
+
+            // 解构Description
+            edttxt_id.setText(descriptions.id.toString())
+            edttxt_Title.setText(descriptions.title)
+            edttxt_place.setText(descriptions.place)
+            edttxt_date.setText(descriptions.date)
+            LogUtils.i("www.ythook.com",descriptions.title + "," + descriptions.place + "," + descriptions.date)
+
 //            // 获取ListView
 //            val listView = parent as ListView
 //

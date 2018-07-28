@@ -17,6 +17,32 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.v7.widget.AppCompatTextView
+            android:layout_width="31dp"
+            android:layout_height="match_parent"
+            android:text="@string/txt_id" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edttxt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/edit_bg"
+            android:ems="13"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liner2"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/txt_title" />
@@ -32,11 +58,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/liner2"
+        android:id="@+id/liner3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="90dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -57,11 +83,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/liner3"
+        android:id="@+id/liner4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="130dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -82,11 +108,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/liner4"
+        android:id="@+id/liner5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="90dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="170dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -109,7 +135,13 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp">
+            android:layout_marginTop="240dp">
+
+            <!-- ID -->
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="ID" />
 
             <!-- 目的 -->
             <TextView
@@ -119,7 +151,7 @@
 
             <!-- 地点 -->
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="地点" />
 

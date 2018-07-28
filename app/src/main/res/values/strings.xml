@@ -2,6 +2,7 @@
     <string name="app_name">统计人数</string>
     <string name="txt_Originator">发起人</string>
     <string name="txt_Participants">参与者</string>
+    <string name="txt_id">ID:</string>
     <string name="txt_title">目的:</string>
     <string name="txt_place">地点:</string>
     <string name="txt_date">时间:</string>

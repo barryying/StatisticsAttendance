@@ -21,16 +21,17 @@ class DescriptionAdapter(var itemList: List<Descriptions>, var context: Context)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var hoder: TestViewhoder
+        var hoder: DescriptionViewhoder
         val view: View
         if (convertView == null) {
             view = View.inflate(context, R.layout.listitem, null)
-            hoder = TestViewhoder(view)
+            hoder = DescriptionViewhoder(view)
             view.tag = hoder
         } else {
             view = convertView
-            hoder = view.tag as TestViewhoder
+            hoder = view.tag as DescriptionViewhoder
         }
+        hoder.id.text = itemList[position].id.toString()
         hoder.title.text = itemList[position].title
         hoder.place.text = itemList[position].place
         hoder.date.text = itemList[position].date
@@ -48,7 +49,8 @@ class DescriptionAdapter(var itemList: List<Descriptions>, var context: Context)
 
 }
 
-class DescriptionViewhoder(var viewItem: View) {
+class DescriptionViewhoder(viewItem: View) {
+    var id: TextView = viewItem.txt_id as TextView
     var title: TextView = viewItem.txt_title as TextView
     var place: TextView = viewItem.txt_place as TextView
     var date: TextView = viewItem.txt_date as TextView
