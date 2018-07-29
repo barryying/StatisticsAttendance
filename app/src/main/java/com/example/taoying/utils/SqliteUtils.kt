@@ -57,25 +57,25 @@ class SqliteUtils(context: Context) : SQLiteOpenHelper(context, SqliteUtils.DB_N
         values.put(TITLE, descriptions.title)
         values.put(PLACE, descriptions.place)
         values.put(DATE, descriptions.date)
-        val _success = db.insert(TABLE_NAME, null, values)
+        val success = db.insert(TABLE_NAME, null, values)
         db.close()
-        Log.v("InsertedId", "$_success")
-        return (Integer.parseInt("$_success") != -1)
+        Log.v("InsertedId", "$success")
+        return (Integer.parseInt("$success") != -1)
     }
 
     fun getDescription(_id: Int): Descriptions {
-        val tasks = Descriptions()
+        val descriptionList = Descriptions()
         val db = writableDatabase
         val sql = "SELECT  * FROM $TABLE_NAME WHERE $ID = $_id"
         val cursor = db.rawQuery(sql, null)
 
         cursor?.moveToFirst()
-        tasks.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
-        tasks.title = cursor.getString(cursor.getColumnIndex(TITLE))
-        tasks.place = cursor.getString(cursor.getColumnIndex(PLACE))
-        tasks.date = cursor.getString(cursor.getColumnIndex(DATE))
+        descriptionList.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
+        descriptionList.title = cursor.getString(cursor.getColumnIndex(TITLE))
+        descriptionList.place = cursor.getString(cursor.getColumnIndex(PLACE))
+        descriptionList.date = cursor.getString(cursor.getColumnIndex(DATE))
         cursor.close()
-        return tasks
+        return descriptionList
     }
 
     fun updateDescription(descriptions: Descriptions): Boolean {
@@ -84,22 +84,22 @@ class SqliteUtils(context: Context) : SQLiteOpenHelper(context, SqliteUtils.DB_N
         values.put(TITLE, descriptions.title)
         values.put(PLACE, descriptions.place)
         values.put(DATE, descriptions.date)
-        val _success = db.update(TABLE_NAME, values, ID + "=?", arrayOf(descriptions.id.toString())).toLong()
+        val success = db.update(TABLE_NAME, values, ID + "=?", arrayOf(descriptions.id.toString())).toLong()
         db.close()
-        return Integer.parseInt("$_success") != -1
+        return Integer.parseInt("$success") != -1
     }
 
     fun deleteDescription(_id: Int): Boolean {
         val db = this.writableDatabase
-        val _success = db.delete(TABLE_NAME, ID + "=?", arrayOf(_id.toString())).toLong()
+        val success = db.delete(TABLE_NAME, ID + "=?", arrayOf(_id.toString())).toLong()
         db.close()
-        return Integer.parseInt("$_success") != -1
+        return Integer.parseInt("$success") != -1
     }
 
     fun deleteAllDescriptions(): Boolean {
         val db = this.writableDatabase
-        val _success = db.delete(TABLE_NAME, null, null).toLong()
+        val success = db.delete(TABLE_NAME, null, null).toLong()
         db.close()
-        return Integer.parseInt("$_success") != -1
+        return Integer.parseInt("$success") != -1
     }
 }

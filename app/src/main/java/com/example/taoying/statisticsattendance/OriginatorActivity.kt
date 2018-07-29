@@ -37,8 +37,8 @@ class OriginatorActivity : AppCompatActivity() {
         toast("初始化")
         initDB()
 
-        btn_cancel.setOnClickListener ({ startActivity(Intent(Guiding@this,MainActivity::class.java ))})
-        btn_submit.setOnClickListener ({
+        btn_cancel.setOnClickListener { startActivity(Intent(Guiding@this,MainActivity::class.java ))}
+        btn_submit.setOnClickListener {
             var success = false
             // 判断是否为空
             var str_title = edttxt_Title.text.toString()
@@ -71,7 +71,7 @@ class OriginatorActivity : AppCompatActivity() {
                 toast("创建成功")
                 //startActivity(Intent(Guiding@this,MainActivity::class.java ))
             }
-        })
+        }
     }
 
     private inner class ItemClickListener : OnItemClickListener {
@@ -113,7 +113,7 @@ class OriginatorActivity : AppCompatActivity() {
         if(!listDescriptions.isEmpty()){
             lsv_description.adapter = DescriptionAdapter(listDescriptions, this)
             // ListView的每个Item点击事件
-            lsv_description.setOnItemClickListener(ItemClickListener())
+            lsv_description.onItemClickListener = ItemClickListener()
             edttxt_Title.setText("")
             edttxt_place.setText("")
             edttxt_date.setText("")
