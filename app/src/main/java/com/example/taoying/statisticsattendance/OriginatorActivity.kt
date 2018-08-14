@@ -34,8 +34,8 @@ class OriginatorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_originator)
-        toast("初始化")
-        initDB()
+        toast("初始化[一共" + initDB() + "条记录。]")
+        //initDB()
 
         btn_cancel.setOnClickListener { startActivity(Intent(Guiding@this,MainActivity::class.java ))}
         btn_submit.setOnClickListener {
@@ -105,7 +105,7 @@ class OriginatorActivity : AppCompatActivity() {
         }
     }
 
-    fun initDB() {
+    fun initDB(): Int {
         // ListView 绑定数据
         sqliteutils = SqliteUtils(this)
         listDescriptions = (sqliteutils as SqliteUtils).description()
@@ -117,9 +117,11 @@ class OriginatorActivity : AppCompatActivity() {
             edttxt_Title.setText("")
             edttxt_place.setText("")
             edttxt_date.setText("")
+            return listDescriptions.count()
         }
         else {
             toast("数据库为空！")
+            return 0
         }
     }
 }
