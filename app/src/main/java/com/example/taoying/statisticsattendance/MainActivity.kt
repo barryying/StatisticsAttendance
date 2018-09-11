@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         //setSupportActionBar(toolbar)
         //toolbar.setTitle("主页")
 
-        imgBtn_Originator.setOnClickListener({ startActivity(Intent(Guiding@this,OriginatorActivity::class.java ))})
-        imgBtn_Participants.setOnClickListener({ startActivity(Intent(Guiding@this,ParticipantsActivity::class.java ))})
+        imgBtn_Originator.setOnClickListener { startActivity(Intent(Guiding@this,OriginatorActivity::class.java ))}
+        imgBtn_Participants.setOnClickListener { startActivity(Intent(Guiding@this,ParticipantsActivity::class.java ))}
     }
 }
